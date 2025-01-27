@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\reportController;
 use App\Http\Controllers\registrationController;
+use App\Http\Controllers\MobileLeaveController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +47,15 @@ Route::post('/leave-approve',[LeaveController::class,'accept'])->name('leave-app
 Route::post('/leave-reject',[LeaveController::class,'reject'])->name('leave-reject');
 Route::get('/reports',[reportController::class,'index'])->name('reports');
 Route::post('/leave-report',[reportController::class,'submit'])->name('leave-report');
+
+
+
+
+
+
+Route::get('/Mobile-Leave',[MobileLeaveController::class,'index'])->name('Mobile-Leave');
+Route::post('/submit-Mobile-leave',[MobileLeaveController::class,'request'])->name('submit-Mobile-leave');
+
 
 
 

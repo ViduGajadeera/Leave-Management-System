@@ -24,9 +24,11 @@ class reportController extends Controller
 
  // Check if type is "ML" and fetch data
  if ($type === 'ML') {
-     $leaves = user_leave::select('EMPID', 'EMPNAME', 'DESIGNATION', 'DATEFROM', 'DATETO', 'REASON', 'status', 'approver')->where('status', 'Approved')
-         ->whereBetween('DATEFROM', [$start_date, $end_date])
-         ->get();
+    $leaves = user_leave::select('EMPID', 'EMPNAME', 'DESIGNATION', 'DATEFROM', 'DATETO', 'type', 'REASON', 'status', 'approver')
+    ->where('status', 'Approved')
+    ->whereBetween('DATEFROM', [$start_date, $end_date])
+    ->orderBy('EMPID')  // Add this line to order by EMPID
+    ->get();
 
          // Prepare data for the view
  $data = [
